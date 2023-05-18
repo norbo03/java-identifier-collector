@@ -14,11 +14,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run bash script
+        id: run-script
         run: |
           chmod +x find_java_names.sh
           ./find_java_names.sh ./identifiers.txt
 
       - name: Upload artifact
+        needs: run-script
         uses: actions/upload-artifact@v2
 	      with:
 	        name: extracted-identifiers
