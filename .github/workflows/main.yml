@@ -1,4 +1,4 @@
-name: Bash Script Pipeline
+name: Extract Public Identifiers
 
 on:
   push:
@@ -17,4 +17,10 @@ jobs:
         run: |
           chmod +x find_java_names.sh
           ./find_java_names.sh ./identifiers.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+	with:
+	  name: extracted-identifiers
+          path: ./foundIdentifiers.txt
 
