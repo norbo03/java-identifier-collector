@@ -21,6 +21,9 @@ names=$(grep -E "$regex" "$input_file" | sed -E 's/^public +(abstract +)?(class|
 #names=$(echo $names | sed -E "s/.*\. \?//g")
 names=$(echo "$names" | awk -F '.' '{print $NF}' | awk '{gsub(/<.*/, ""); print}')
 
+# Sort and remove duplicates
+#names=$(echo $names | sort | uniq)
+
 # Remove type parameters from the names
 #names=$(echo "$names" | sed -E "s/<[^>]*//g")
 
@@ -36,7 +39,10 @@ names=$(echo "$names" | awk -F '.' '{print $NF}' | awk '{gsub(/<.*/, ""); print}
 output="./foundIdentifiers.txt"
 
 # Save the names
-echo "$names" > "$output"
+temp="$(mktemp)"
+echo "$names" > "$temp"
+
+cat "$temp" | sort | uniq > "$output"
 
 echo "Found all class|interface names and saved to $output"
 
