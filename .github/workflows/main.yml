@@ -23,5 +23,5 @@ jobs:
         needs: run-script
         uses: actions/upload-artifact@v2
         with:
-	        name: extracted-identifiers
+	  name: extracted-identifiers
           path: ./foundIdentifiers.txt
