@@ -46,5 +46,5 @@ cat "$temp" | sort | uniq > "$output"
 
 echo "Found all class|interface names and saved to $output"
 
-echo "vim $output" | xclip -sel clip
+#echo "vim $output" | xclip -sel clip
 
