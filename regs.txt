@@ -1,0 +1,14 @@
+[ ]*(.*),\n
+\t\tPUBLIC_IDENTIFIERS.add($1);\n
+
+[\t]{2,2}(.*)\n
+\t\tPUBLIC_IDENTIFIERS.add("$1");\n
+
+[ ]{8,8}(.*)\n
+
+
+[ ]{16,16}
+
+#this line contains exactly 8 spaces
+        
+#until here
